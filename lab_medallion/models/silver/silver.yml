@@ -7,6 +7,11 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: username_normalized
+        description: Username trimmed and lowercased, used to compare usernames case-insensitively.
+        data_tests:
+          - not_null
+          - unique
       - name: email
         data_tests:
           - unique
@@ -40,7 +45,9 @@ models:
                 to: ref('stg_users')
                 field: user_id
       - name: quantity
+        description: Number of items ordered, strictly positive.
         data_tests:
+          - positive
           - accepted_values:
               arguments:
                 values: [1, 2, 3, 4, 5]

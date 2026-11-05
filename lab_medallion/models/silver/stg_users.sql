@@ -19,6 +19,8 @@ typed as (
 select
     user_id,
     username,
+    -- Exercise 1: trimmed and lowercased username, for case-insensitive comparisons
+    lower(trim(username)) as username_normalized,
     name,
     sex,
     email,
